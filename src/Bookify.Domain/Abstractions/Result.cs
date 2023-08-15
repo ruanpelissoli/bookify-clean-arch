@@ -11,12 +11,12 @@ public class Result
         if (!isSuccess && error == Error.None)
             throw new InvalidOperationException();
 
-        IsSucess = isSuccess;
+        IsSuccess = isSuccess;
         Error = error;
     }
 
-    public bool IsSucess { get; }
-    public bool IsFailure => !IsSucess;
+    public bool IsSuccess { get; }
+    public bool IsFailure => !IsSuccess;
 
     public Error Error { get; }
 
@@ -40,7 +40,7 @@ public class Result<TValue> : Result
     }
 
     [NotNull]
-    public TValue Value => IsSucess
+    public TValue Value => IsSuccess
         ? _value!
         : throw new InvalidOperationException("The value of a failure result can not be accessed.");
 

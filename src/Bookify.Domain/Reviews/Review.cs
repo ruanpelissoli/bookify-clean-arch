@@ -7,7 +7,7 @@ public sealed class Review : Entity
 {
     private Review(
         Guid id,
-    Guid apartmentId,
+        Guid apartmentId,
         Guid bookingId,
         Guid userId,
         Rating rating,
@@ -22,6 +22,8 @@ public sealed class Review : Entity
         Comment = comment;
         CreatedOnUtc = createdOnUtc;
     }
+
+    private Review() { }
 
     public Guid ApartmentId { get; private set; }
 
