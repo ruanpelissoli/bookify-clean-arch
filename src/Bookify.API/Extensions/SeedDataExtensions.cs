@@ -25,12 +25,15 @@ public static class SeedDataExtensions
                 Name = faker.Company.CompanyName(),
                 Description = "Amazing view",
                 Country = faker.Address.Country(),
-                Sstate = faker.Address.State(),
+                State = faker.Address.State(),
                 ZipCode = faker.Address.ZipCode(),
+                City = faker.Address.City(),
                 Street = faker.Address.StreetAddress(),
                 PriceAmount = faker.Random.Decimal(50, 1000),
                 PriceCurrency = "USD",
-                Amenities = new List<int> { (int)Amenity.Parking, (int)Amenity.MountainView, (int)Amenity.Wifi },
+                CleaningFeeAmount = faker.Random.Decimal(25, 200),
+                CleaningFeeCurrency = "USD",
+                Amenities = new List<int> { (int)Amenity.Parking, (int)Amenity.MountainView },
                 LastBookedOn = DateTime.MinValue
             });
         }
