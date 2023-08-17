@@ -40,7 +40,7 @@ internal sealed class ReserveBookingCommandHandler :
         if (user is null)
             return Result.Failure<Guid>(UserErrors.NotFound);
 
-        var apartment = await _apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
+        var apartment = await _apartmentRepository.GetByIdAsync(new ApartmentId(request.ApartmentId), cancellationToken);
 
         if (apartment is null)
             return Result.Failure<Guid>(ApartmentErrors.NotFound);
@@ -63,7 +63,7 @@ internal sealed class ReserveBookingCommandHandler :
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            return booking.Id;
+            return booking.Id.Value;
         }
         catch (ConcurrencyException)
         {
